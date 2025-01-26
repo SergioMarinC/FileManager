@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { user } from 'src/Modelo/User';
+import { User } from 'src/Modelo/User';
 import { UserService } from 'src/Servicios/Usuario/user.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class RegisterComponent{
   
     register(email: string, password: string): void{
       this.userService.register(email, password).subscribe({
-        next: (response: user) => {
+        next: (response: User) => {
           console.log('Usuario registrado: ', response.userID);
           this.router.navigate(['/login']);
         },

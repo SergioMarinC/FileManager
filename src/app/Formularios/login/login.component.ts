@@ -21,23 +21,24 @@ export class LoginComponent{
 
   onSubmit(){
     const {email, password} = this.loginForm.value;
-    // if (this.usuarioServicio.validarUsuario(usuario, contra)){
-    //   this.router.navigate(['/categorias']);
-    // } else {
-    //   alert('Usuario o contraseña incorrectos');
-    // }
+
     this.login(email, password);
+    this.router.navigate(['/mis-documentos']);
   }
 
-  login(email: string, password: string): void{
+  login(email: string, password: string): void {
     this.userService.login(email, password).subscribe({
-      next: (token: string) => {
-        this.userService.guardarToken(token);
+      next: (response: any) => {  // La respuesta ahora es un objeto que contiene 'jwtToken'
+        const token = response.jwtToken;  // Extraemos el token de la respuesta
+        if (token) {
+          this.userService.guardarToken(token);  // Guardamos el token
+        } else {
+          console.error('El token no se encuentra en la respuesta');
+        }
       },
       error: (err) => {
-        // Manejo de error, si el login falla
         console.error('Error en el login', err);
       }
     });
-  }
+  }  
 }

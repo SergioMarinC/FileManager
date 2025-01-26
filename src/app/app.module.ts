@@ -6,12 +6,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Formularios/login/login.component';
 import { RegisterComponent } from './Formularios/register/register.component';
+import { MainLayoutComponent } from './ContenidoPrincipal/main-layout/main-layout.component';
+import { DocumentoComponent } from './ContenidoPrincipal/documento/documento.component';
+import { MisDocumentosComponent } from './ContenidoPrincipal/mis-documentos/mis-documentos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MainLayoutComponent,
+    DocumentoComponent,
+    MisDocumentosComponent
   ],
   imports: [
     BrowserModule,
