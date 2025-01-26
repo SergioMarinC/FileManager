@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Formularios/login/login.component';
 import { RegisterComponent } from './Formularios/register/register.component';
@@ -11,6 +12,7 @@ import { DocumentoComponent } from './ContenidoPrincipal/documento/documento.com
 import { MisDocumentosComponent } from './ContenidoPrincipal/mis-documentos/mis-documentos.component';
 import { BasuraComponent } from './ContenidoPrincipal/basura/basura.component';
 import { PapeleraComponent } from './ContenidoPrincipal/papelera/papelera.component';
+import { AjustesComponent } from './ContenidoPrincipal/ajustes/ajustes.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,14 @@ import { PapeleraComponent } from './ContenidoPrincipal/papelera/papelera.compon
     DocumentoComponent,
     MisDocumentosComponent,
     BasuraComponent,
-    PapeleraComponent
+    PapeleraComponent,
+    AjustesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

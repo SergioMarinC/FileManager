@@ -1,3 +1,34 @@
-<p>
-  ajustes works!
-</p>
+<div>
+  <h1>Ajustes de Usuario</h1>
+  <form [formGroup]="ajustesForm" (ngSubmit)="updateUser()">
+    <div>
+      <label for="userName">Nombre de usuario:</label>
+      <input id="userName" type="text" formControlName="userName" />
+      <div *ngIf="ajustesForm.get('userName')?.invalid && ajustesForm.get('userName')?.touched">
+        <small *ngIf="ajustesForm.get('userName')?.errors?.['required']">El nombre de usuario es obligatorio.</small>
+        <small *ngIf="ajustesForm.get('userName')?.errors?.['minlength']">
+          El nombre de usuario debe tener al menos 3 caracteres.
+        </small>
+      </div>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email" />
+      <div *ngIf="ajustesForm.get('email')?.invalid && ajustesForm.get('email')?.touched">
+        <small *ngIf="ajustesForm.get('email')?.errors?.['required']">El email es obligatorio.</small>
+        <small *ngIf="ajustesForm.get('email')?.errors?.['email']">Por favor, introduce un email válido.</small>
+      </div>
+    </div>
+    <button type="submit" [disabled]="ajustesForm.invalid">Guardar Cambios</button>
+  </form>
+
+  <div class="password-section">
+    <h2>Cambiar Contraseña</h2>
+    <button (click)="changePassword()">Cambiar Contraseña</button>
+  </div>
+
+  <div class="delete-account">
+    <h2>Eliminar Cuenta</h2>
+    <button class="btn-danger" (click)="confirmDelete()">Eliminar Cuenta</button>
+  </div>
+</div>

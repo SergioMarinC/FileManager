@@ -53,11 +53,11 @@ export class PapeleraComponent implements OnInit {
           this.fileService.restore(fileId).subscribe({
             next: (message: string) => {
               this.files.splice(fileIndex, 1);
-              Swal.fire('Eliminado', 'El archivo ha sido eliminado.', 'success');
+              Swal.fire('Eliminado', 'El archivo ha sido restaurado.', 'success');
             },
             error: (err) => {
-              console.error('Error al eliminar el archivo', err);
-              Swal.fire('Error', 'No se pudo eliminar el archivo.', 'error');
+              console.error('Error al restaurar el archivo', err);
+              Swal.fire('Error', 'No se pudo restaurar el archivo.', 'error');
             }
           });
         }
