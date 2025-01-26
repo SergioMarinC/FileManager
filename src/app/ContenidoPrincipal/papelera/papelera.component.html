@@ -1,3 +1,4 @@
-<p>
-  papelera works!
-</p>
+<div>
+  <h1>Papelera</h1>
+  <app-basura *ngFor="let f of files" [file]="f" (idFileRestore)="restoreFile($event)" (idFileDelete)="deleteFile($event)"></app-basura>
+</div>

@@ -67,5 +67,24 @@ export class FilesService {
       map(response => response)  // Aquí solo devolvemos el mensaje de respuesta
     );
   }
+
+  restore(fileId: string): Observable<string> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`,
+    });
   
+    console.log(`URL para eliminar: ${this.apiUrl}restore/${fileId}`);
+  
+    return this.http.patch<string>(`${this.apiUrl}restore/${fileId}`, {}, { headers, responseType: 'text' as 'json' });
+  }
+  
+  delete(fileId: string): Observable<string> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`,
+    });
+  
+    console.log(`URL para eliminar: ${this.apiUrl}${fileId}`);
+  
+    return this.http.delete<string>(`${this.apiUrl}${fileId}`, { headers, responseType: 'text' as 'json' });
+  }
 }

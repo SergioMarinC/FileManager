@@ -1,2 +1,4 @@
-<h1>hika</h1>
-<app-documento *ngFor="let f of files" [file]="f" (idFileDownload)="downloadFile($event)" (idFileRecycle)="recycleFile($event)"></app-documento>
+<div>
+    <h1>Mis Documentos</h1>
+    <app-documento *ngFor="let f of files" [file]="f" (idFileDownload)="downloadFile($event)" (idFileRecycle)="recycleFile($event)"></app-documento>
+</div>

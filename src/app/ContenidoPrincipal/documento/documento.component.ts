@@ -24,7 +24,7 @@ export class DocumentoComponent {
     }
   }
 
-  delete(): void {
+  recycle(): void {
     console.log('ID del archivo:', this.file?.fileId); // Verifica si `fileId` es accesible
     if (this.file) {
       this.idFileRecycle.emit(this.file.fileId); // Emite el ID

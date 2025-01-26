@@ -9,6 +9,8 @@ import { RegisterComponent } from './Formularios/register/register.component';
 import { MainLayoutComponent } from './ContenidoPrincipal/main-layout/main-layout.component';
 import { DocumentoComponent } from './ContenidoPrincipal/documento/documento.component';
 import { MisDocumentosComponent } from './ContenidoPrincipal/mis-documentos/mis-documentos.component';
+import { BasuraComponent } from './ContenidoPrincipal/basura/basura.component';
+import { PapeleraComponent } from './ContenidoPrincipal/papelera/papelera.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { MisDocumentosComponent } from './ContenidoPrincipal/mis-documentos/mis-
     RegisterComponent,
     MainLayoutComponent,
     DocumentoComponent,
-    MisDocumentosComponent
+    MisDocumentosComponent,
+    BasuraComponent,
+    PapeleraComponent
   ],
   imports: [
     BrowserModule,
