@@ -1,82 +1,92 @@
 .layout {
-    display: flex;
-    min-height: 100vh;
-    overflow: hidden;
-  }
+  position: fixed;
+  width:100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #7c97b15b;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 100;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
   
+}
+
+.sidebar nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar nav ul li {
+  margin: 15px 0;
+}
+
+.sidebar nav ul li a {
+  color: black;
+  font-size: 18px;
+  display: flex; 
+  align-items: center; 
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+  border-radius: 20px;
+}
+
+.sidebar nav ul li a svg {
+  margin-right: 10px; 
+}
+
+.sidebar nav ul li a:hover {
+  background-color: #495868b4;
+  border-radius: 20px;
+}
+
+
+a:focus, a:active, a:visited {
+  text-decoration: none;
+}
+
+.content {
+  margin-left: 250px;
+  padding: 20px;
+  flex-grow: 1;
+  transition: margin-left 0.3s;
+}
+
+
+.contenido-scroll {
+  height: 100vh; 
+}
+
+router-outlet {
+  display: block;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
   .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #7c97b15b;
-    padding: 20px;
-    box-sizing: border-box;
-    z-index: 100;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-    
+    width: 200px;
   }
-  
-  .sidebar nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .sidebar nav ul li {
-    margin: 15px 0;
-  }
-  
-  .sidebar nav ul li a {
-    color: black;
-    font-size: 18px;
-    display: flex; 
-    align-items: center; 
-    padding: 10px 20px;
-    transition: background-color 0.3s;
-    border-radius: 20px;
-  }
-  
-  .sidebar nav ul li a svg {
-    margin-right: 10px; 
-  }
-  
-  .sidebar nav ul li a:hover {
-    background-color: #495868b4;
-    border-radius: 20px;
-  }
-  
-  
-  .sidebar nav ul li a:hover {
-    background-color: #4958688f;
-    border-radius: 20px;
-  }
-  
+
   .content {
-    margin-left: 250px;
-    padding: 20px;
-    flex-grow: 1;
-    transition: margin-left 0.3s;
+    margin-left: 200px;
   }
-  
-  @media (max-width: 768px) {
-    .sidebar {
-      width: 200px;
-    }
-  
-    .content {
-      margin-left: 200px;
-    }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    width: 0;
+    visibility: hidden;
   }
-  
-  @media (max-width: 600px) {
-    .sidebar {
-      width: 0;
-      visibility: hidden;
-    }
-  
-    .content {
-      margin-left: 0;
-    }
+
+  .content {
+    margin-left: 0;
   }
+}

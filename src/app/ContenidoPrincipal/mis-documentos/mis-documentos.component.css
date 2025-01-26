@@ -1,0 +1,28 @@
+/* Contenedor principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Hace que ocupe toda la altura de la ventana */
+}
+
+/* Cabecera con los títulos y botón */
+.header {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para la cabecera */
+    z-index: 10; /* Para asegurarse que siempre esté arriba */
+}
+
+/* Contenedor de los documentos */
+.documents-container {
+    flex-grow: 1; /* Hace que el contenedor de los documentos ocupe el espacio restante */
+    overflow-y: auto; /* Permite que los documentos se desplacen verticalmente */
+    padding: 10px;
+}
+
+/* Contenedor que alberga los documentos del ngFor */
+.document-list {
+    padding-bottom: 20px; /* Optional: Añadir algo de espacio al final */
+}
