@@ -19,18 +19,18 @@ export class BasuraComponent implements OnInit {
   }
 
   restore(): void{
-    console.log('ID del archivo:', this.file?.fileId); // Verifica si `fileId` es accesible
+    console.log('ID del archivo:', this.file?.fileId);
     if (this.file) {
-      this.idFileRestore.emit(this.file.fileId); // Emite el ID
+      this.idFileRestore.emit(this.file.fileId);
     } else {
       console.error('No se encuentra el archivo para eliminar');
     }
   }
 
   delete(): void {
-    console.log('ID del archivo:', this.file?.fileId); // Verifica si `fileId` es accesible
+    console.log('ID del archivo:', this.file?.fileId);
     if (this.file) {
-      this.idFileDelete.emit(this.file.fileId); // Emite el ID
+      this.idFileDelete.emit(this.file.fileId);
     } else {
       console.error('No se encuentra el archivo para eliminar');
     }

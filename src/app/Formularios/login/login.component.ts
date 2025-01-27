@@ -28,11 +28,10 @@ export class LoginComponent{
 
   login(email: string, password: string): void {
     this.userService.login(email, password).subscribe({
-      next: (response: any) => {  // La respuesta ahora es un objeto que contiene 'jwtToken'
-        const token = response.jwtToken;  // Extraemos el token de la respuesta
+      next: (response: any) => { 
+        const token = response.jwtToken;
         if (token) {
-          this.userService.guardarToken(token);  // Guardamos el token
-        } else {
+          this.userService.guardarToken(token);
           console.error('El token no se encuentra en la respuesta');
         }
       },

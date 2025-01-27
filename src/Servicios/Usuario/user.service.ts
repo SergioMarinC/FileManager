@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { User } from 'src/Modelo/User';
 import { jwtDecode } from 'jwt-decode';
 
@@ -19,7 +19,13 @@ export class UserService {
       "email": email,
       "password": password
     };
-    return this.http.post<any>(`${this.apiUrl}Login`, body);
+    return this.http.post<any>(`${this.apiUrl}Login`, body).pipe(
+      tap((response: any) => {
+        if (response.jwtToken) {
+          localStorage.setItem(this.tokenKey, response.jwtToken);
+        }
+      })
+    );
   }
 
   register(email: string, password: string): Observable<User> {
@@ -39,21 +45,20 @@ export class UserService {
   }
 
   guardarToken(token: string): void {
-  console.log('Token recibido:', token);  // Verifica el token recibido
+  console.log('Token recibido:', token);
   if (typeof token === 'string') {
     localStorage.setItem(this.tokenKey, token);
-    console.log('Token guardado:', localStorage.getItem(this.tokenKey));  // Verifica que el token se guardó correctamente
+    console.log('Token guardado:', localStorage.getItem(this.tokenKey));
   } else {
     console.error('El token no es una cadena válida');
   }
 }
 
 
-  // Método para eliminar el token (logout)
   eliminarToken(): void {
     localStorage.removeItem(this.tokenKey);
   }
-  // Método para obtener el userID desde el token JWT
+  
   obtenerUsuarioID(): string | null {
     const token = this.obtenerToken();
   
@@ -63,12 +68,11 @@ export class UserService {
       return null;
     }
   
-    // Verifica si el token tiene la estructura adecuada
     if (token.split('.').length === 3) {
       try {
         const decodedToken: any = jwtDecode(token);
-        if (decodedToken.sub) { // Aquí cambiamos a 'sub'
-          return decodedToken.sub; // Devuelve el userID
+        if (decodedToken.sub) { 
+          return decodedToken.sub;
         } else {
           console.error('El token no contiene el userID.');
           return null;

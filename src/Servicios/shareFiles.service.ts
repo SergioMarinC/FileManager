@@ -17,7 +17,7 @@ constructor(private http: HttpClient, private userService: UserService) { }
 
 getSharedFiles() : Observable<SharedFile[]> {
   const userId = this.userService.obtenerUsuarioID();
-  console.log('User ID:', userId);  // Verifica si el userId es correcto
+  console.log('User ID:', userId); 
 
   if (!userId) {
     throw new Error('No se pudo obtener el userId.');
@@ -28,9 +28,8 @@ getSharedFiles() : Observable<SharedFile[]> {
   });
 
   return this.http.get<any[]>(`${this.apiShareUrl}/user/${userId}`, { headers }).pipe(
-    // Log de la respuesta cruda
     map(response => {
-      console.log('Respuesta cruda del servidor:', response);  // Verifica la respuesta antes de mapearla
+      console.log('Respuesta cruda del servidor:', response);
       return response.map(fileData => 
         new SharedFile(
           fileData.userFileID,
@@ -48,9 +47,9 @@ getSharedFiles() : Observable<SharedFile[]> {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`,
     });
   
-    const url = `${this.apiShareUrl}/${userFileId}/revoke`; // Construimos la URL completa
+    const url = `${this.apiShareUrl}/${userFileId}/revoke`;
     console.log('Revoke URL:', url);
   
-    return this.http.delete(url, { headers }); // Hacemos la solicitud PATCH
+    return this.http.delete(url, { headers });
   }
 }

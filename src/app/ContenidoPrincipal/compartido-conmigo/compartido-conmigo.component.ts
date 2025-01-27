@@ -34,7 +34,6 @@ export class CompartidoConmigoComponent implements OnInit {
   downloadFile(fileId: string): void {
     console.log('ID recibido para descargar:', fileId);
   
-    // Busca el archivo en la lista de archivos compartidos
     const file = this.sharedFiles.find(f => f.FileID === fileId);
     
     if (!file) {
@@ -42,13 +41,12 @@ export class CompartidoConmigoComponent implements OnInit {
       return;
     }
   
-    // Llama al servicio para realizar la descarga
     this.fileService.downloadFile(fileId).subscribe({
       next: (fileBlob: Blob) => {
         const url = window.URL.createObjectURL(fileBlob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = file.FileName;  // O usa un nombre si lo deseas
+        link.download = file.FileName;
         link.click();
         window.URL.revokeObjectURL(url);
       },
@@ -74,7 +72,7 @@ export class CompartidoConmigoComponent implements OnInit {
             console.log('Acceso revocado exitosamente:', response);
             this.sharedFiles.splice(fileIndex, 1);
             Swal.fire('Éxito', 'El acceso ha sido revocado.', 'success');
-            this.getSharedfiles(); // Refrescar lista de archivos si es necesario
+            this.getSharedfiles();
           },
           error: (error) => {
             console.error('Error al revocar el acceso:', error);

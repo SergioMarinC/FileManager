@@ -32,9 +32,8 @@ export class MisDocumentosComponent implements OnInit {
   }
 
   downloadFile(fileId: string): void {
-    console.log('ID recibido para descargar:', fileId); // Verifica el ID recibido
+    console.log('ID recibido para descargar:', fileId);
   
-    // Usamos el getter para buscar en la lista de archivos
     const file = this.files.find(f => f.fileId === fileId);
     if (!file) {
       console.error('Archivo no encontrado para el ID:', fileId);
@@ -46,7 +45,7 @@ export class MisDocumentosComponent implements OnInit {
         const url = window.URL.createObjectURL(fileBlob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = file.fileName || 'file'; // Usa el getter para fileName
+        link.download = file.fileName || 'file'; 
         link.click();
         window.URL.revokeObjectURL(url);
       },
@@ -65,7 +64,6 @@ export class MisDocumentosComponent implements OnInit {
       return;
     }
 
-    // Mostrar diálogo de confirmación
     Swal.fire({
       title: '¿Estás seguro?',
       text: '¡Este archivo será eliminado!',
@@ -97,26 +95,25 @@ export class MisDocumentosComponent implements OnInit {
       title: 'Subir archivo',
       input: 'file',
       inputAttributes: {
-        accept: '*/*', // Puedes cambiar esto si solo permites ciertos tipos de archivos
+        accept: '*/*',
       },
       showCancelButton: true,
       confirmButtonText: 'Subir',
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed && result.value) {
-        const file = result.value as File; // Obtiene el archivo seleccionado
-        const ownerId = this.userService.obtenerUsuarioID(); // Obtén el OwnerID (debe estar en localStorage o tu lógica)
+        const file = result.value as File; 
+        const ownerId = this.userService.obtenerUsuarioID();
   
         if (!ownerId) {
           Swal.fire('Error', 'No se pudo obtener el OwnerID.', 'error');
           return;
         }
   
-        // Llama al servicio para subir el archivo
         this.fileService.uploadFile(file, '', ownerId).subscribe({
           next: () => {
             Swal.fire('Éxito', 'El archivo se ha subido correctamente.', 'success');
-            this.getFiles(); // Refresca la lista de archivos
+            this.getFiles();
           },
           error: (err) => {
             console.error('Error al subir el archivo:', err);

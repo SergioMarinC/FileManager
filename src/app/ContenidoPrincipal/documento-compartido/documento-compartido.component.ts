@@ -20,18 +20,18 @@ export class DocumentoCompartidoComponent implements OnInit {
   }
 
   download(): void {
-    console.log('ID del archivo:', this.sharedFile?.FileID); // Verifica si `fileId` es accesible
+    console.log('ID del archivo:', this.sharedFile?.FileID);
     if (this.sharedFile) {
-      this.idFileDownload.emit(this.sharedFile.FileID); // Emite el ID
+      this.idFileDownload.emit(this.sharedFile.FileID); 
     } else {
       console.error('No se encuentra el archivo para descargar');
     }
   }
 
   delete(): void {
-    console.log('ID del archivo:', this.sharedFile?.FileID); // Verifica si `fileId` es accesible
+    console.log('ID del archivo:', this.sharedFile?.FileID); 
     if (this.sharedFile) {
-      this.idFileDelete.emit(this.sharedFile.UserFileID); // Emite el ID
+      this.idFileDelete.emit(this.sharedFile.UserFileID);
     } else {
       console.error('No se encuentra el archivo para eliminar');
     }

@@ -18,7 +18,7 @@ export class FilesService {
 
   getFiles() : Observable<FileModel[]> {
     const userId = this.userService.obtenerUsuarioID();
-    console.log('User ID:', userId);  // Verifica si el userId es correcto
+    console.log('User ID:', userId);
   
     if (!userId) {
       throw new Error('No se pudo obtener el userId.');
@@ -74,7 +74,7 @@ export class FilesService {
 
     return this.http.get(`${this.apiUrl}download/${fileId}`, {
       headers,
-      responseType: 'blob', // Indicamos que esperamos un archivo (Blob)
+      responseType: 'blob',
     });
   }
   
@@ -86,7 +86,7 @@ export class FilesService {
     console.log(`URL para eliminar: ${this.apiUrl}remove/${fileId}`);
   
     return this.http.delete<string>(`${this.apiUrl}remove/${fileId}`, { headers, responseType: 'text' as 'json' }).pipe(
-      map(response => response)  // Aquí solo devolvemos el mensaje de respuesta
+      map(response => response)
     );
   }
 
@@ -112,9 +112,9 @@ export class FilesService {
 
   uploadFile(file: File, folderPath: string, ownerId: string): Observable<any> {
     const formData = new FormData();
-    formData.append('UploadedFile', file, file.name); // Campo para el archivo
-    formData.append('FolderPath', folderPath || ''); // Campo opcional para la ruta
-    formData.append('OwnerID', ownerId); // ID del propietario
+    formData.append('UploadedFile', file, file.name);
+    formData.append('FolderPath', folderPath || ''); 
+    formData.append('OwnerID', ownerId);
   
     const headers = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`,
@@ -129,7 +129,7 @@ export class FilesService {
     // Añadir datos al FormData
     formData.append('FileID', fileId);
     formData.append('Email', email);
-    formData.append('PermissionType', '1'); // Asegúrate de que PermissionType sea un string o número según lo que espera el servidor
+    formData.append('PermissionType', '1');
   
     const headers = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`,

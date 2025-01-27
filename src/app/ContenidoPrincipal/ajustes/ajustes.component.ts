@@ -41,7 +41,7 @@ export class AjustesComponent implements OnInit {
 
   updateUser(): void {
     if (this.ajustesForm.valid) {
-      const formValues = this.ajustesForm.value; // Obtén los valores del formulario
+      const formValues = this.ajustesForm.value;
       this.userService.updateUser(formValues.userName, formValues.email).subscribe({
         next: () => {
           Swal.fire('Éxito', 'Los datos del usuario han sido actualizados.', 'success');
@@ -72,12 +72,12 @@ export class AjustesComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed && result.value) {
-        const password = result.value; // Capturamos la contraseña ingresada
+        const password = result.value;
         this.userService.deleteUser(password).subscribe({
           next: () => {
             Swal.fire('Eliminado', 'Tu cuenta ha sido eliminada.', 'success').then(() => {
               this.userService.eliminarToken();
-              window.location.href = '/login'; // Redirige al usuario fuera de la aplicación
+              window.location.href = '/login';
             });
           },
           error: (err) => {
