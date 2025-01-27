@@ -1,4 +1,10 @@
-<div>
-  <h1>Papelera</h1>
-  <app-basura *ngFor="let f of files" [file]="f" (idFileRestore)="restoreFile($event)" (idFileDelete)="deleteFile($event)"></app-basura>
+<div class="container">
+  <div class="header">
+    <h1>Papelera</h1>
+  </div>
+  <div class="documents-container">
+      <div class="document-list">
+        <app-basura *ngFor="let f of files" [file]="f" (idFileRestore)="restoreFile($event)" (idFileDelete)="deleteFile($event)"></app-basura>
+      </div>
+  </div>
 </div>

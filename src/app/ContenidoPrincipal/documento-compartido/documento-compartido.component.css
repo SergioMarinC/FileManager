@@ -1,0 +1,47 @@
+/* Contenedor principal con scroll y estilo horizontal */
+div {
+    display: flex;
+    flex-direction: row; /* Los botones en fila */
+    gap: 10px; /* Espacio entre los botones */
+    background-color: #f0f0f0; /* Gris cálido */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: auto; /* Habilitar scroll horizontal si el contenido excede */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    justify-content: flex-start; /* Alinea los elementos a la izquierda */
+    border: 1px solid #ccc; /* Borde sutil alrededor del contenedor */
+    border-radius: 8px; /* Bordes redondeados */
+  }
+  
+  /* Encabezado h4 */
+  h4 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Párrafos */
+  p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para los botones */
+  button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc; /* Borde sutil alrededor de los botones */
+    background-color: #7c97b15b; /* Gris cálido */
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Hover de los botones */
+  button:hover {
+    background-color: #6a7f99;
+    border-color: #a1b1c1; /* Color del borde en hover */
+  }
+  

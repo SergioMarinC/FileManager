@@ -1,6 +1,8 @@
-<h4>{{sharedFile.FileName}}</h4>
-<p>{{sharedFile.FileName}}</p>
-<p>{{sharedFile.OwnerName}}</p>
-<p>{{sharedFile.SharedDate | date}}</p>
-<button (click)="download()">Descargar</button>
-<button (click)="delete()">Revocar acceso</button>
+<div>
+    <h4>{{sharedFile.FileName}}</h4>
+    <p>{{sharedFile.FileName}}</p>
+    <p>{{sharedFile.OwnerName}}</p>
+    <p>{{sharedFile.SharedDate | date}}</p>
+    <button (click)="download()">Descargar</button>
+    <button (click)="delete()">Revocar acceso</button>
+</div>

@@ -1,0 +1,94 @@
+/* Estilo global para el formulario */
+div {
+    background-color: #f9f9f9; /* Fondo claro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra más ligera */
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+  }
+  
+  /* Títulos */
+  h1, h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  /* Formulario */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Menos espacio entre los campos */
+  }
+  
+  /* Etiquetas y entradas de formulario */
+  label {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  input:focus {
+    border-color: #7c97b15b;
+    outline: none;
+  }
+  
+  /* Mensajes de error */
+  small {
+    color: #e74c3c;
+    font-size: 12px;
+  }
+  
+  /* Estilo para el botón de guardar cambios */
+  button {
+    padding: 10px 16px;
+    font-size: 14px;
+    border: none;
+    background-color: #7c97b15b; /* Gris cálido */
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Estilo para los botones de "Cambiar Contraseña" y "Eliminar Cuenta" */
+  .password-section, .delete-account {
+    margin-top: 20px;
+  }
+  
+  .password-section button, .delete-account button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    background-color: #7c97b15b; /* Gris cálido */
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .password-section button:hover, .delete-account button:hover {
+    background-color: #6a7f99;
+  }
+  
+  .delete-account button.btn-danger {
+    background-color: #e74c3c; /* Rojo para la eliminación */
+  }
+  
+  .delete-account button.btn-danger:hover {
+    background-color: #c0392b; /* Rojo más oscuro */
+  }
+   
