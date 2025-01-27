@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FileModel } from 'src/Modelo/File';
+import { FileModel } from 'src/Modelo/FileModel';
 import { FilesService } from 'src/Servicios/Usuario/files.service';
 import Swal from 'sweetalert2';
 

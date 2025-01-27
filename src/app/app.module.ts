@@ -13,6 +13,8 @@ import { MisDocumentosComponent } from './ContenidoPrincipal/mis-documentos/mis-
 import { BasuraComponent } from './ContenidoPrincipal/basura/basura.component';
 import { PapeleraComponent } from './ContenidoPrincipal/papelera/papelera.component';
 import { AjustesComponent } from './ContenidoPrincipal/ajustes/ajustes.component';
+import { CompartidoConmigoComponent } from './ContenidoPrincipal/compartido-conmigo/compartido-conmigo.component';
+import { DocumentoCompartidoComponent } from './ContenidoPrincipal/documento-compartido/documento-compartido.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { AjustesComponent } from './ContenidoPrincipal/ajustes/ajustes.component
     MisDocumentosComponent,
     BasuraComponent,
     PapeleraComponent,
-    AjustesComponent
+    AjustesComponent,
+    CompartidoConmigoComponent,
+    DocumentoCompartidoComponent
   ],
   imports: [
     BrowserModule,

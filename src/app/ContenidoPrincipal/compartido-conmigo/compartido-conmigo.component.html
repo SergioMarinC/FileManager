@@ -1,3 +1,10 @@
-<p>
-  compartido-conmigo works!
-</p>
+<div class="container">
+  <div class="header">
+      <h1>Compartido conmigo</h1>
+  </div>
+  <div class="documents-container">
+      <div class="document-list">
+          <app-documento-compartido *ngFor="let s of sharedFiles" [sharedFile]="s" (idFileDownload)="downloadFile($event)" (idFileDelete)="revokeAccess($event)"></app-documento-compartido>
+      </div>
+  </div>
+</div>

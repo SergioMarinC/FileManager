@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FileModel } from 'src/Modelo/File';
+import { FileModel } from 'src/Modelo/FileModel';
 
 @Component({
   selector: 'app-documento',
@@ -19,7 +19,7 @@ export class DocumentoComponent {
   download(): void {
     console.log('ID del archivo:', this.file?.fileId); // Verifica si `fileId` es accesible
     if (this.file) {
-      this. idFileDownload.emit(this.file.fileId); // Emite el ID
+      this.idFileDownload.emit(this.file.fileId); // Emite el ID
     } else {
       console.error('No se encuentra el archivo para descargar');
     }

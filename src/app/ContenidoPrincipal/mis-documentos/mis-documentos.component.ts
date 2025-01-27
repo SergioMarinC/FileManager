@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FileModel } from 'src/Modelo/File';
+import { FileModel } from 'src/Modelo/FileModel';
 import { FilesService } from 'src/Servicios/Usuario/files.service';
 import { UserService } from 'src/Servicios/Usuario/user.service';
 import Swal from 'sweetalert2';
@@ -81,6 +81,7 @@ export class MisDocumentosComponent implements OnInit {
           next: (message: string) => {
             this.files.splice(fileIndex, 1);
             Swal.fire('Eliminado', 'El archivo ha sido eliminado.', 'success');
+            this.getFiles();
           },
           error: (err) => {
             console.error('Error al eliminar el archivo', err);

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FileModel } from 'src/Modelo/File';
+import { FileModel } from 'src/Modelo/FileModel';
 
 @Component({
   selector: 'app-basura',

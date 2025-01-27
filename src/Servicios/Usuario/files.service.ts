@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { FileModel } from 'src/Modelo/File';
+import { FileModel } from 'src/Modelo/FileModel';
 import { User } from 'src/Modelo/User';
 import { UserService } from './user.service';
 
@@ -32,15 +32,36 @@ export class FilesService {
       map(response => response.map(fileData => 
         new FileModel(
           fileData.fileID, 
-        fileData.fileName, 
-        fileData.filePath, 
-        fileData.fileSize, 
-        fileData.createdDate, 
-        fileData.isDeleted, 
-        fileData.ownerID
+          fileData.fileName, 
+          fileData.filePath, 
+          fileData.fileSize, 
+          fileData.createdDate, 
+          fileData.isDeleted, 
+          fileData.ownerID
         )
       ))
     );
+  }
+
+
+  getFile(fileId: string): Observable<FileModel> {
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    });
+  
+    return this.http.get<any>(`${this.apiUrl}${fileId}`, { headers }).pipe(
+      map(fileData =>  
+        new FileModel(
+          fileData.fileID, 
+          fileData.fileName, 
+          fileData.filePath, 
+          fileData.fileSize, 
+          fileData.createdDate, 
+          fileData.isDeleted, 
+          fileData.ownerID
+        )
+      ));
   }
 
   downloadFile(fileId: string): Observable<Blob> {
