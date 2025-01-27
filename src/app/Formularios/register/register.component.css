@@ -1,0 +1,57 @@
+/* Estilos generales */
+form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  
+  /* Encabezado */
+  h1 {
+    text-align: center;
+    color: #7c97b15b;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos de los inputs */
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Estilo para los botones */
+  button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    background-color: #7c97b15b;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Hover en los botones */
+  button:hover {
+    background-color: #6a7f99;
+  }
+  
+  /* Estilos de los enlaces */
+  a {
+    color: #7c97b15b;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
