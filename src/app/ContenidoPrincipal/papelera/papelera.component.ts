@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { File } from 'src/Modelo/File';
+import { FileModel } from 'src/Modelo/File';
 import { FilesService } from 'src/Servicios/Usuario/files.service';
 import Swal from 'sweetalert2';
 
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class PapeleraComponent implements OnInit {
 
-  files: File[] = [];
+  files: FileModel[] = [];
 
   constructor(private fileService: FilesService) { }
 
@@ -20,7 +20,7 @@ export class PapeleraComponent implements OnInit {
 
   getFiles(): void {
     this.fileService.getFiles().subscribe({
-      next: (files: File[]) => {
+      next: (files: FileModel[]) => {
         this.files = files.filter(file => file.isDeleted);
       },
       error: (err) => {

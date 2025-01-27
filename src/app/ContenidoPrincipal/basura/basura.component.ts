@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { File } from 'src/Modelo/File';
+import { FileModel } from 'src/Modelo/File';
 
 @Component({
   selector: 'app-basura',
@@ -8,7 +8,7 @@ import { File } from 'src/Modelo/File';
 })
 export class BasuraComponent implements OnInit {
 
-  @Input() file!: File;
+  @Input() file!: FileModel;
   @Output() idFileRestore = new EventEmitter<string>();
   @Output() idFileDelete = new EventEmitter<string>();
 

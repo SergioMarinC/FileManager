@@ -1,4 +1,4 @@
-export class File {
+export class FileModel {
 
     private _fileID: string;
     private _fileName: string;

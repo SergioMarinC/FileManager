@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { File } from 'src/Modelo/File';
+import { FileModel } from 'src/Modelo/File';
 import { FilesService } from 'src/Servicios/Usuario/files.service';
+import { UserService } from 'src/Servicios/Usuario/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,9 +11,9 @@ import Swal from 'sweetalert2';
 })
 export class MisDocumentosComponent implements OnInit {
 
-  files: File[] = [];
+  files: FileModel[] = [];
 
-  constructor(private fileService: FilesService) { }
+  constructor(private fileService: FilesService, private userService: UserService) { }
 
   ngOnInit() {
     this.getFiles();
@@ -20,7 +21,7 @@ export class MisDocumentosComponent implements OnInit {
 
   getFiles(): void {
     this.fileService.getFiles().subscribe({
-      next: (files: File[]) => {
+      next: (files: FileModel[]) => {
         this.files = files.filter(file => !file.isDeleted);
       },
       error: (err) => {
@@ -89,4 +90,68 @@ export class MisDocumentosComponent implements OnInit {
       }
     });
   }
+
+  uploadFile(): void {
+    Swal.fire({
+      title: 'Subir archivo',
+      input: 'file',
+      inputAttributes: {
+        accept: '*/*', // Puedes cambiar esto si solo permites ciertos tipos de archivos
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Subir',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed && result.value) {
+        const file = result.value as File; // Obtiene el archivo seleccionado
+        const ownerId = this.userService.obtenerUsuarioID(); // Obtén el OwnerID (debe estar en localStorage o tu lógica)
+  
+        if (!ownerId) {
+          Swal.fire('Error', 'No se pudo obtener el OwnerID.', 'error');
+          return;
+        }
+  
+        // Llama al servicio para subir el archivo
+        this.fileService.uploadFile(file, '', ownerId).subscribe({
+          next: () => {
+            Swal.fire('Éxito', 'El archivo se ha subido correctamente.', 'success');
+            this.getFiles(); // Refresca la lista de archivos
+          },
+          error: (err) => {
+            console.error('Error al subir el archivo:', err);
+            Swal.fire('Error', 'No se pudo subir el archivo.', 'error');
+          },
+        });
+      }
+    });
+  }
+
+  shareFile(fileId: string): void {
+    Swal.fire({
+      title: 'Compartir archivo',
+      input: 'email',
+      inputLabel: 'Correo electrónico del usuario',
+      inputPlaceholder: 'Ingresa el correo del usuario',
+      showCancelButton: true,
+      confirmButtonText: 'Compartir',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed && result.value) {
+        const email = result.value;
+  
+        this.fileService.shareFile(fileId, email).subscribe({
+          next: (response) => {
+            console.log('Archivo compartido exitosamente:', response);
+            Swal.fire('Éxito', 'El archivo se ha compartido correctamente', 'success');
+          },
+          error: (error) => {
+            console.error('Error al compartir el archivo:', error);
+            Swal.fire('Error', 'Hubo un problema al compartir el archivo', 'error');
+          }
+        });
+        
+      }
+    });
+  }
+  
 }
